@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import Pizza from '../components/Pizza'
-class PizzaList extends Component {
+class PizzaList extends Component { 
+
+
+  renderPizzas = () => {
+    const {pizzaList, editPizza} = this.props 
+
+    return pizzaList.map(pizza => <Pizza key={pizza.id} pizzaInfo={pizza} editPizza={editPizza}/>)
+  }
+  
+
 
   render() {
     return (
@@ -15,7 +24,7 @@ class PizzaList extends Component {
         </thead>
         <tbody>
           {
-            //render Pizza here
+            this.renderPizzas()
           }
         </tbody>
       </table>
