@@ -41,16 +41,16 @@ class App extends Component {
   }
 
   handleSubmit = () => {
-    fetch(`${API}/${this.state.selectedPizza.id}`, {
+    fetch(`${API}/${this.state.editPizza.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json',},
-      body: JSON.stringify(this.state.selectedPizza),
+      body: JSON.stringify(this.state.editPizza),
     })
     .then(res => res.json())
     .then(
       this.setState(prev=>({pizzas: prev.pizzas.map(pizza=> {
-        if(this.state.selectedPizza.id===pizza.id){
-          pizza={...this.state.selectedPizza}
+        if(this.state.editPizza.id===pizza.id){
+          pizza={...this.state.editPizza}
         }
         return pizza
       }), showForm: false}))
